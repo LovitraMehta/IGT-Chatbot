@@ -11,3 +11,8 @@ faster-whisper
 Pillow
 Werkzeug
 python-docx
+PyPDF2
+bcrypt
+markdown
+numpy
+pytesseract
