@@ -1,0 +1,93 @@
+Authentication & User
+POST /api/register — Register a new user (email, name, dob).
+POST /api/login — Log in with email.
+POST /api/logout — Log out the current user.
+Chat & Document Q&A
+POST /api/chat — Send a question and get an answer based on uploaded documents and selected context.
+POST /api/upload — Upload files (txt, pdf, docx, png, jpg, jpeg) for context.
+GET /api/history — Get the current chat history for the logged-in user.
+GET /api/files — Get a list of uploaded files for the user.
+Chat Session Management
+POST /api/new_chat — Start a new chat session (archives the previous one).
+GET /api/chats_history — Get metadata for all previous chat sessions.
+GET /api/chats_history/<int:idx> — Get the full history for a specific previous chat session.
+Speech & Text
+POST /stt — Speech-to-text (audio file to text, using Whisper).
+POST /tts — Text-to-speech (text to audio, using gTTS).
+
+
+# Convert ai_message to HTML using markdown
+    ai_message_html = markdown.markdown(ai_message, extensions=['fenced_code', 'tables'])
+    return jsonify({'answer': ai_message, 'answer_html': ai_message_html})
+
+    Markdown is a lightweight markup language used to format text using simple syntax. For example:
+
+markdown
+Copy
+Edit
+**bold** → bold  
+*italic* → italic  
+- List item → • List item  
+
+It's commonly used in:
+
+README files
+
+Chat interfaces (like Discord, Slack, etc.)
+
+Documentation
+
+Your assistant’s text generation (to structure the reply)
+How It's Used in Your App
+In your Flask app, the assistant’s response is likely plain text (with Markdown-style formatting). You use:
+
+python
+Copy
+Edit
+import markdown
+answer_html = markdown.markdown(ai_message, extensions=['fenced_code', 'tables'])
+This does two things:
+
+ai_message is a raw string with Markdown syntax (e.g., **bold**, code blocks).
+
+markdown.markdown(...) converts that string into HTML.
+
+Example:
+
+
+ai_message = "Here is some code:\n```python\ndef hello():\n    print('hi')\n```"
+Becomes:
+
+<p>Here is some code:</p>
+<pre><code class="language-python">def hello():
+    print('hi')</code></pre>
+That output (answer_html) is passed to your Jinja2 template:
+
+<div id="answer_text">{{ answer_html | safe }}</div>
+The |safe tells Jinja2:
+“Don’t escape the HTML tags — render them as actual HTML.”
+
+What Does extensions=['fenced_code', 'tables'] Do?
+These enable extended Markdown features:
+
+fenced_code:
+
+Enables triple backtick code blocks:
+
+markdown
+
+```python
+print("Hello")
+
+Renders with <pre><code> HTML tags and proper formatting.
+
+tables:
+
+Allows this Markdown table to work:
+
+markdown
+
+| Name | Age |
+|------|-----|
+| John | 25  |
+Converts it into an HTML table.
