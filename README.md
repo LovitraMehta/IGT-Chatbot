@@ -17,13 +17,6 @@ A full-stack AI-powered chatbot that answers questions based on your uploaded do
 - **Responsive UI:** Clean, modern, and mobile-friendly interface.
 
 ---
-
-## Demo
-
-![Chatbot Screenshot](./screenshot.png)
-
----
-
 ## Project Structure
 
 ```
@@ -193,4 +186,4 @@ Pull requests are welcome! Please open an issue first to discuss your ideas.
 
 ## Contact
 
-For questions or support, open an issue or contact [your-email@example.com](mailto:your-email@example.com).
+For questions or support, open an issue or contact [your-email@example.com](mailto:lovitramehta@example.com).
