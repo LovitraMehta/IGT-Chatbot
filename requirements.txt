@@ -10,3 +10,4 @@ gTTS
 faster-whisper
 Pillow
 Werkzeug
+python-docx
