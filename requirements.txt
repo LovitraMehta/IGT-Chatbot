@@ -1,0 +1,12 @@
+Flask
+Flask-Cors
+python-dotenv
+pymongo
+ai21
+pdf2image
+sentence-transformers
+scikit-learn
+gTTS
+faster-whisper
+Pillow
+Werkzeug
